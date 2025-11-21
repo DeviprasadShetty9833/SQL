@@ -13,456 +13,248 @@ Full MySQL Command Arsenal ⚔️
 
 ---
 
-🏗️ 1. Database & Table Management
+Here are comprehensive SQL fundamentals with examples and explanations following your requested format:
 
-- Creates a new database
+---
 
+## **1. Creates a new database**
 ```sql
 CREATE DATABASE database_name;
 ```
 
 *Example:*
-
 ```sql
 CREATE DATABASE company;
 ```
 
 *Explanation:*
-
 Creates a new database named 'company' where you can store tables and data.
 
-Lists all databases
+---
 
-```sql
-SHOW DATABASES;
-```
-
-Example:
-
-```sql
-SHOW DATABASES;
-```
-
-Explanation: Displays all databases available on the MySQL server including system and user databases.
-
-Selects a database to work on
-
+## **2. Selects a database to use**
 ```sql
 USE database_name;
 ```
 
-Example:
-
+*Example:*
 ```sql
 USE company;
 ```
 
-Explanation: Switches to the specified database. All subsequent operations will be performed on this database.
+*Explanation:*
+Switches to the 'company' database context. All subsequent operations will be performed on this database.
 
-Creates a new table
+---
 
+## **3. Creates a new table**
 ```sql
 CREATE TABLE table_name (
-    column1 data_type constraints,
-    column2 data_type constraints
+    column1 datatype constraints,
+    column2 datatype constraints
 );
 ```
 
-Example:
-
+*Example:*
 ```sql
 CREATE TABLE employees (
     id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(50) NOT NULL,
-    salary DECIMAL(10,2)
+    salary DECIMAL(10,2),
+    hire_date DATE
 );
 ```
 
-Explanation: Creates a table structure with defined columns, data types, and constraints. AUTO_INCREMENT automatically generates sequential numbers.
-
-Shows table structure
-
-```sql
-DESC table_name;
-```
-
-Example:
-
-```sql
-DESC employees;
-```
-
-Explanation: Displays the complete structure of the table including column names, data types, and constraints.
-
-Adds a new column
-
-```sql
-ALTER TABLE table_name ADD COLUMN column_name data_type;
-```
-
-Example:
-
-```sql
-ALTER TABLE employees ADD COLUMN email VARCHAR(100);
-```
-
-Explanation: Modifies an existing table by adding a new column to it.
+*Explanation:*
+Creates a table called 'employees' with columns for ID, name, salary, and hire date. ID is the primary key that auto-increments.
 
 ---
 
-🧱 2. Data Manipulation (DML)
-
-Inserts a new record
-
-```sql
-INSERT INTO table_name VALUES (value1, value2, value3);
-```
-
-Example:
-
-```sql
-INSERT INTO employees VALUES (1, 'John Doe', 50000.00);
-```
-
-Explanation: Adds a complete new row to the table. Values must match the column order.
-
-Inserts specific columns
-
+## **4. Inserts data into a table**
 ```sql
 INSERT INTO table_name (column1, column2) VALUES (value1, value2);
 ```
 
-Example:
-
+*Example:*
 ```sql
-INSERT INTO employees (name, salary) VALUES ('Jane Smith', 60000.00);
+INSERT INTO employees (name, salary, hire_date) 
+VALUES ('John Doe', 50000.00, '2023-01-15');
 ```
 
-Explanation: Adds a new row but only for specified columns. Auto-increment columns can be omitted.
+*Explanation:*
+Adds a new employee record with name 'John Doe', salary 50000, and hire date January 15, 2023.
 
-Updates existing records
+---
 
+## **5. Retrieves data from a table**
 ```sql
-UPDATE table_name SET column = value WHERE condition;
+SELECT column1, column2 FROM table_name WHERE condition;
 ```
 
-Example:
-
+*Example:*
 ```sql
-UPDATE employees SET salary = 55000.00 WHERE id = 1;
+SELECT name, salary FROM employees WHERE salary > 40000;
 ```
 
-Explanation: Modifies existing data in the table. WHERE clause is crucial to avoid updating all rows.
+*Explanation:*
+Fetches names and salaries of all employees earning more than 40,000.
 
-Deletes specific records
+---
 
+## **6. Updates existing records**
+```sql
+UPDATE table_name SET column1 = value1 WHERE condition;
+```
+
+*Example:*
+```sql
+UPDATE employees SET salary = 55000 WHERE name = 'John Doe';
+```
+
+*Explanation:*
+Increases John Doe's salary to 55,000 in the employees table.
+
+---
+
+## **7. Deletes records from a table**
 ```sql
 DELETE FROM table_name WHERE condition;
 ```
 
-Example:
-
+*Example:*
 ```sql
-DELETE FROM employees WHERE id = 5;
+DELETE FROM employees WHERE hire_date < '2020-01-01';
 ```
 
-Explanation: Removes specific rows from the table. Always use WHERE to avoid deleting all data.
+*Explanation:*
+Removes all employees who were hired before January 1, 2020.
 
-Retrieves all records
+---
 
+## **8. Adds a new column to table**
 ```sql
-SELECT * FROM table_name;
+ALTER TABLE table_name ADD column_name datatype;
 ```
 
-Example:
-
+*Example:*
 ```sql
-SELECT * FROM employees;
+ALTER TABLE employees ADD department VARCHAR(30);
 ```
 
-Explanation: Fetches all columns and all rows from the specified table.
+*Explanation:*
+Adds a new 'department' column to the existing employees table to store department names.
 
-Filters records with WHERE
+---
 
+## **9. Modifies column datatype**
 ```sql
-SELECT columns FROM table_name WHERE condition;
+ALTER TABLE table_name MODIFY column_name new_datatype;
 ```
 
-Example:
-
+*Example:*
 ```sql
-SELECT name, salary FROM employees WHERE salary > 50000;
+ALTER TABLE employees MODIFY salary DECIMAL(12,2);
 ```
 
-Explanation: Retrieves only rows that meet the specified condition.
+*Explanation:*
+Changes the salary column to allow larger values (up to 12 digits with 2 decimal places).
 
-Sorts results
+---
 
+## **10. Removes a table completely**
 ```sql
-SELECT columns FROM table_name ORDER BY column ASC|DESC;
+DROP TABLE table_name;
 ```
 
-Example:
-
+*Example:*
 ```sql
-SELECT name, salary FROM employees ORDER BY salary DESC;
+DROP TABLE temporary_data;
 ```
 
-Explanation: Sorts the result set in ascending (ASC) or descending (DESC) order.
+*Explanation:*
+Permanently deletes the 'temporary_data' table and all its data from the database.
 
-Groups rows with aggregate
+---
 
+## **11. Creates an index for faster queries**
 ```sql
-SELECT column, aggregate_function(column) 
-FROM table_name 
-GROUP BY column;
+CREATE INDEX index_name ON table_name (column_name);
 ```
 
-Example:
-
+*Example:*
 ```sql
-SELECT department, AVG(salary) 
+CREATE INDEX idx_employee_name ON employees (name);
+```
+
+*Explanation:*
+Creates an index on the name column to speed up search operations involving employee names.
+
+---
+
+## **12. Combines rows from multiple tables**
+```sql
+SELECT columns FROM table1 JOIN table2 ON table1.column = table2.column;
+```
+
+*Example:*
+```sql
+SELECT employees.name, departments.dept_name 
+FROM employees 
+JOIN departments ON employees.dept_id = departments.id;
+```
+
+*Explanation:*
+Retrieves employee names along with their department names by joining employees and departments tables.
+
+---
+
+## **13. Groups rows and applies aggregate functions**
+```sql
+SELECT column, COUNT(*) FROM table_name GROUP BY column;
+```
+
+*Example:*
+```sql
+SELECT department, COUNT(*) as employee_count 
 FROM employees 
 GROUP BY department;
 ```
 
-Explanation: Groups rows that have the same values and applies aggregate functions to each group.
-
-Joins tables
-
-```sql
-SELECT columns 
-FROM table1 
-JOIN table2 ON table1.column = table2.column;
-```
-
-Example:
-
-```sql
-SELECT e.name, d.department_name 
-FROM employees e 
-JOIN departments d ON e.dept_id = d.id;
-```
-
-Explanation: Combines rows from two or more tables based on a related column between them.
+*Explanation:*
+Counts how many employees work in each department by grouping records by department.
 
 ---
 
-🔐 3. Data Definition (DDL)
-
-Creates an index
-
+## **14. Filters groups with HAVING clause**
 ```sql
-CREATE INDEX index_name ON table_name(column_name);
+SELECT column, COUNT(*) FROM table_name GROUP BY column HAVING condition;
 ```
 
-Example:
-
+*Example:*
 ```sql
-CREATE INDEX idx_email ON users(email);
+SELECT department, AVG(salary) as avg_salary 
+FROM employees 
+GROUP BY department 
+HAVING AVG(salary) > 50000;
 ```
 
-Explanation: Creates an index on a column to improve query performance for search operations.
-
-Adds foreign key constraint
-
-```sql
-ALTER TABLE table_name 
-ADD FOREIGN KEY (column) REFERENCES other_table(column);
-```
-
-Example:
-
-```sql
-ALTER TABLE orders 
-ADD FOREIGN KEY (customer_id) REFERENCES customers(id);
-```
-
-Explanation: Ensures referential integrity by linking a column to a primary key in another table.
+*Explanation:*
+Shows only departments where the average salary is greater than 50,000.
 
 ---
 
-🧭 4. Transaction Control (TCL)
-
-Begins a transaction
-
+## **15. Removes a database completely**
 ```sql
-START TRANSACTION;
+DROP DATABASE database_name;
 ```
 
-Example:
-
+*Example:*
 ```sql
-START TRANSACTION;
+DROP DATABASE old_company;
 ```
 
-Explanation: Starts a transaction block. Subsequent statements become part of a single atomic operation.
-
-Saves changes permanently
-
-```sql
-COMMIT;
-```
-
-Example:
-
-```sql
-COMMIT;
-```
-
-Explanation: Permanently saves all changes made during the current transaction.
-
-Undoes changes
-
-```sql
-ROLLBACK;
-```
-
-Example:
-
-```sql
-ROLLBACK;
-```
-
-Explanation: Reverts all changes made during the current transaction.
-
----
-
-👨‍💼 5. User & Privilege Management (DCL)
-
-Creates a new user
-
-```sql
-CREATE USER 'username'@'host' IDENTIFIED BY 'password';
-```
-
-Example:
-
-```sql
-CREATE USER 'admin'@'localhost' IDENTIFIED BY 'securepass123';
-```
-
-Explanation: Creates a new database user with login credentials and host restriction.
-
-Grants privileges
-
-```sql
-GRANT privilege ON database.table TO 'user'@'host';
-```
-
-Example:
-
-```sql
-GRANT SELECT, INSERT ON company.* TO 'manager'@'localhost';
-```
-
-Explanation: Gives specific permissions to a user for database objects.
-
----
-
-🧮 6. Functions
-
-Aggregate function - COUNT
-
-```sql
-SELECT COUNT(column) FROM table_name;
-```
-
-Example:
-
-```sql
-SELECT COUNT(*) FROM employees;
-```
-
-Explanation: Returns the number of rows that match the query criteria.
-
-String function - CONCAT
-
-```sql
-SELECT CONCAT(string1, string2) FROM table_name;
-```
-
-Example:
-
-```sql
-SELECT CONCAT(first_name, ' ', last_name) AS full_name FROM employees;
-```
-
-Explanation: Combines two or more strings into a single string.
-
-Date function - NOW
-
-```sql
-SELECT NOW();
-```
-
-Example:
-
-```sql
-SELECT NOW();
-```
-
-Explanation: Returns the current date and time.
-
-Conditional function - CASE
-
-```sql
-SELECT CASE WHEN condition THEN result ELSE default END FROM table;
-```
-
-Example:
-
-```sql
-SELECT name,
-    CASE 
-        WHEN salary > 70000 THEN 'High'
-        ELSE 'Standard'
-    END as grade
-FROM employees;
-```
-
-Explanation: Performs conditional logic within a SQL query.
-
----
-
-🧠 7. Views & Procedures
-
-Creates a view
-
-```sql
-CREATE VIEW view_name AS SELECT query;
-```
-
-Example:
-
-```sql
-CREATE VIEW high_paid_employees AS
-SELECT name, salary FROM employees WHERE salary > 70000;
-```
-
-Explanation: Creates a virtual table based on a SQL query that can be queried like a regular table.
-
-Creates a stored procedure
-
-```sql
-CREATE PROCEDURE procedure_name(parameters)
-BEGIN
-    SQL statements;
-END;
-```
-
-Example:
-
-```sql
-DELIMITER //
-CREATE PROCEDURE GetEmployeeCount()
-BEGIN
-    SELECT COUNT(*) FROM employees;
-END //
-DELIMITER ;
-```
-
-Explanation: Creates a reusable set of SQL statements that can be executed with a single call.
+*Explanation:*
+Permanently deletes the entire 'old_company' database and all its contents.
 
 ---
 
