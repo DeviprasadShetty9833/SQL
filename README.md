@@ -15,19 +15,21 @@ Full MySQL Command Arsenal ⚔️
 
 🏗️ 1. Database & Table Management
 
-Creates a new database
+- Creates a new database
 
 ```sql
 CREATE DATABASE database_name;
 ```
 
-Example:
+*Example:*
 
 ```sql
 CREATE DATABASE company;
 ```
 
-Explanation: Creates a new database named 'company' where you can store tables and data.
+*Explanation:*
+
+Creates a new database named 'company' where you can store tables and data.
 
 Lists all databases
 
