@@ -13,9 +13,9 @@ Full MySQL Command Arsenal ⚔️
 
 ---
 
-🏗️ 1. Database & Table Management
+### 🏗️ 1. Database & Table Management
 
-- Creates a new database
+Creates a new database
 
 ```sql
 CREATE DATABASE database_name;
@@ -29,9 +29,9 @@ CREATE DATABASE company;
 
 *Explanation:*
 
-Creates a new database named 'company' where you can store tables and data.
+- Creates a new database named 'company' where you can store tables and data.
 
-- Lists all databases
+Lists all databases
 
 ```sql
 SHOW DATABASES;
@@ -45,9 +45,9 @@ SHOW DATABASES;
 
 *Explanation:*
 
-Displays all databases available on the MySQL server including system and user databases.
+- Displays all databases available on the MySQL server including system and user databases.
 
-- Selects a database to work on
+Selects a database to work on
 
 ```sql
 USE database_name;
@@ -59,7 +59,9 @@ USE database_name;
 USE company;
 ```
 
-*Explanation:* Switches to the specified database. All subsequent operations will be performed on this database.
+*Explanation:* 
+
+- Switches to the specified database. All subsequent operations will be performed on this database.
 
 Creates a new table
 
