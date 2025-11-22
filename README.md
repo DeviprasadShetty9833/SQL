@@ -120,7 +120,7 @@ ALTER TABLE employees ADD COLUMN email VARCHAR(100);
 
 ---
 
-🧱 2. Data Manipulation (DML)
+## 🧱 2. Data Manipulation (DML)
 
 Inserts a new record
 
@@ -258,7 +258,7 @@ Explanation: Combines rows from two or more tables based on a related column bet
 
 ---
 
-🔐 3. Data Definition (DDL)
+## 🔐 3. Data Definition (DDL)
 
 Creates an index
 
@@ -292,7 +292,7 @@ Explanation: Ensures referential integrity by linking a column to a primary key 
 
 ---
 
-🧭 4. Transaction Control (TCL)
+## 🧭 4. Transaction Control (TCL)
 
 Begins a transaction
 
@@ -338,7 +338,7 @@ Explanation: Reverts all changes made during the current transaction.
 
 ---
 
-👨‍💼 5. User & Privilege Management (DCL)
+## 👨‍💼 5. User & Privilege Management (DCL)
 
 Creates a new user
 
@@ -370,7 +370,7 @@ Explanation: Gives specific permissions to a user for database objects.
 
 ---
 
-🧮 6. Functions
+## 🧮 6. Functions
 
 Aggregate function - COUNT
 
@@ -435,7 +435,7 @@ Explanation: Performs conditional logic within a SQL query.
 
 ---
 
-🧠 7. Views & Procedures
+## 🧠 7. Views & Procedures
 
 Creates a view
 
