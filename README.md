@@ -92,27 +92,31 @@ CREATE TABLE employees (
 DESC table_name;
 ```
 
-Example:
+*Example:*
 
 ```sql
 DESC employees;
 ```
 
-Explanation: Displays the complete structure of the table including column names, data types, and constraints.
+*Explanation:*
 
-Adds a new column
+- Displays the complete structure of the table including column names, data types, and constraints.
+
+6. Adds a new column
 
 ```sql
 ALTER TABLE table_name ADD COLUMN column_name data_type;
 ```
 
-Example:
+*Example:*
 
 ```sql
 ALTER TABLE employees ADD COLUMN email VARCHAR(100);
 ```
 
-Explanation: Modifies an existing table by adding a new column to it.
+*Explanation:*
+
+- Modifies an existing table by adding a new column to it.
 
 ---
 
