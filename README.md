@@ -11,13 +11,31 @@ ER (Entity-Relationship) Model - The Foundation
 
 - 
 
-Core Components:
+*Core Components:*
 
 ```
 Entity ------> Rectangle
 Attribute ---> Oval
 Relationship -> Diamond
 ```
+
+*Example:*
+```
+STUDENT (Entity)
+    ├── StudentID (Key Attribute)
+    ├── Name
+    ├── Age
+    └── Rollno
+
+COURSE (Entity)
+    ├── CourseID (Key Attribute)
+    ├── Title
+    ├── Duration 
+    └── Credits
+
+ENROLLS_IN (Relationship) between STUDENT and COURSE
+```
+
 
 ---
 
