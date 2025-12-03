@@ -7,6 +7,20 @@
 
 ---
 
+ER (Entity-Relationship) Model - The Foundation
+
+- 
+
+Core Components:
+
+```
+Entity ------> Rectangle
+Attribute ---> Oval
+Relationship -> Diamond
+```
+
+---
+
 Full MySQL Command Arsenal ⚔️
 
 ✨ Each command includes general syntax, practical example, and clear explanation for easy understanding!
