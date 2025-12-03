@@ -9,7 +9,7 @@
 
 ER (Entity-Relationship) Model - The Foundation
 
-- 
+-
 
 *Core Components:*
 
@@ -36,6 +36,18 @@ COURSE (Entity)
 STUDENT ENROLLS_IN (Relationship) COURSE
 ```
 
+*Limitations of Basic ER:*
+
+1. Cannot represent "specialization" (a Professor "is a" Employee)
+2. Cannot show inheritance
+3. Cannot represent union types
+4. Limited constraints representation
+
+---
+
+EER (Enhanced Entity-Relationship) Model - The Extended Version
+
+- 
 
 ---
 
