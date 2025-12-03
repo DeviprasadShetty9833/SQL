@@ -7,7 +7,7 @@
 
 ---
 
-ER (Entity-Relationship) Model - The Foundation
+#### ER (Entity-Relationship) Model - The Foundation
 
 -
 
@@ -45,7 +45,7 @@ STUDENT ENROLLS_IN (Relationship) COURSE
 
 ---
 
-EER (Enhanced Entity-Relationship) Model - The Extended Version
+#### EER (Enhanced Entity-Relationship) Model - The Extended Version
 
 - 
 
